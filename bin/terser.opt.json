@@ -1,0 +1,10 @@
+{
+	"compress": {
+		"drop_console": true
+	},
+	"mangle": {
+		"toplevel": true
+	},
+	"sourceMap": {
+	}
+}

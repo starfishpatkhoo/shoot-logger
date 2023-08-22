@@ -1,0 +1,21 @@
+// ---- SASS Modules - Add them to individual Modules
+@use "sass:math";  // We can't use normal CSS div, but must use SASS math.div
+@use "sass:color";  // Color Functions
+@use "sass:map";  // Array Functions
+
+// ---- Vendor Stuff
+@use "../vendor/pico/settings" as *;
+@use "../vendor/pico/themes/default/styles";
+@use "dark";
+
+// ---- Enable Colour Theme
+:root {
+	@include dark.theme;
+
+	progress,
+	[type="checkbox"],
+	[type="radio"],
+	[type="range"] {
+		accent-color: var(#{$✨}primary);
+	}
+}

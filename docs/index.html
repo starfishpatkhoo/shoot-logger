@@ -1,0 +1,148 @@
+<html>
+<head>
+<!--
+*
+*** Copyright (c) 2023 Patrick Khoo @ https://deepwave.net ***
+*
+-->
+<title>Patrick's Recording / Streaming Logger</title>
+<link rel="stylesheet" href="s/logger.min.css" type="text/css" />
+<script src="s/logger.min.js"></script>
+</head>
+<body>
+<main class="container">
+<h1>Patrick's Recording / Streaming Logger</h1>
+
+<div class="row">
+	<div class="col-xs-12 col-md-2 txt-center">
+		<div class="row">
+			<div class="col-xs-4 col-md-12 btn-space-below"><button id="btn-camera" class="btn-max-width"></button></div>
+			<div class="col-xs-4 col-md-12 btn-space-below"><button id="btn-discard" class="btn-max-width" disabled="true">Bad Take <span class="txt-tiny">[X]</span></button></div>
+			<div class="col-xs-4 col-md-12 btn-space-below"><button id="btn-take" class="btn-max-width" disabled="true"></button></div>
+		</div>
+		<select id="btn-fps">
+			<option value="120">120 fps</option>
+			<option value="100">100 fps</option>
+			<option value="60">60 fps</option>
+			<option value="50" selected>50 fps</option>
+			<option value="30">30 fps</option>
+			<option value="25">25 fps</option>
+			<option value="24">24 fps</option>
+			<option value="1000">Audio</option>
+			<option value="1">Seconds</option>
+		</select>
+	</div>
+	<div class="col-xs-12 col-md-5 txt-center">
+		<article class="txt-center expanded">
+			<h5>Recording Timecode</h5>
+			<h1 id="disp-main"></h1>
+		</article>
+	</div>
+	<div class="col-xs-12 col-md-5 txt-center">
+		<article class="txt-center expanded">
+			<h5>Take Duration</h5>
+			<h1 id="disp-take"></h1>
+		</article>
+	</div>
+</div>
+
+<article>
+	<details id="btn-takes">
+		<summary>Take Log <span class="txt-tiny">[L]</span></summary>
+		<div class="row">
+			<div class="col-xs-12 col-md-3 txt-center" role="group">
+				<input type="number" inputmode="numeric" id="rec-no" placeholder="File #" min="0" step="1" />
+				<input type="number" inputmode="numeric" id="take-no" placeholder="Take #" min="0" step="1" />
+			</div>
+			<div class="col-xs-12 col-md-7">
+				<input type="text" id="take-comment" size="100" placeholder="Comment" />
+			</div>
+			<div class="col-xs-12 col-md-1">
+				<button id="btn-copy" class="btn-max-width"></button>
+			</div>
+		</div>
+		<table id="disp-take-log">
+			<thead>
+				<th class="txt-center">File #</th>
+				<th class="txt-center">Take #</th>
+				<th class="txt-center">Start</th>
+				<th class="txt-center">End</th>
+				<th class="txt-center">Duration</th>
+				<th>Comment</th>
+			</thead>
+			<tbody id="disp-takes"></tbody>
+		</table>
+	</details>
+</article>
+
+<article>
+	<details id="btn-help">
+		<summary>Readme First / Help <span class="txt-tiny">[H]</span></summary>
+		<h2>Keep track of takes or highlights while recording or streaming</h2>
+		<p>
+			Trying to keep track of what you recorded and what you can use in the final edit is a major time consuming problem.
+			One needs to keep track of which digital file contains which take(s), the timecodes of when each take starts/ends, if it was a good/bad take, and what the take was about/for.
+			On big(ger) productions, there is usually an AD or script supervisor who keeps track of this sort of thing on set, and communicates that to the editors in post-production.
+			But adding an extra human being to record all this information is incredibly expensive.
+		</p>
+		<p>
+			So having a simple tool you can use to quickly <small>(hint: keyboard shortcuts)</small> record all this information (by yourself if necessary) is very useful.
+		</p>
+		<p>
+			Of course the timecodes here are not precise/exact (we don't have a Tentacle Sync after all), so it may be off by a few frames/miliseconds/seconds when you open your files in your favourite editor.
+			But hopefully, it saves you a lot of time/effort in scrubbing your video files looking for that one good take or highlight.
+		</p>
+		<h5>Workflow: One File, Many Takes</h5>
+		<p>
+			In my normal workflow, I tend to record multiple takes continuously (multiple takes in a single recording).
+			This creates a single long recording file with many takes, rather than many small files (each with one take).
+			This is also the workflow for streaming or Zoom because you can't start/stop a stream or Zoom room whenever you like, just to pick out a good/bad highlight (take).
+		</p>
+		<h5>Workflow: One Take per File</h5>
+		<p>
+			If your workflow is one where you start a new recording for each individual take (one take per recording) and create many small files, you can still use this tool by noting the <code>File #</code> and/or using the comment field to indicate the file name/recording number instead.
+			Just remember that recordings that have no good takes in it are ignored and not saved to the <code>Take Log</code>.
+		</p>
+		<h5>General Workflow</h5>
+		<ul>
+			<li>Before you start, be sure to set the correct FPS for your recording. Use <code>Audio</code> if you are doing audio only recordings.</li>
+			<li>When you start recording on your Camera/ATEM/Recorder/Zoom room or start sending stream data to YouTube or Facebook RTMP Servers, click <code>Roll Camera</code></li>
+			<li>When:
+				<ul>
+					<li>the talent is ready, and you are ready to call "Action!",</li>
+					<li>you are about to start a key moment in your stream/Zoom room, or</li>
+					<li>want to mark a highlight or key moment in your stream/Zoom room that just happened</li>
+				</ul>
+				click <code>Action!</code>.
+			</li>
+			<li>When the take is complete: if it is good and you want to keep it, click <code>Good Take</code>, but if it is bad, click <code>Bad Take</code> to ignore it.</li>
+			<li>When you are done and want to stop the recording, click <code>Stop Camera</code>.</li>
+			<li>At any time, you can click <code>Take Log</code> to add comments to each take. Simply enter the <code>File #</code> (for an earlier recording), <code>Take #</code> and <code>Comment</code>, and press <kbd>ENTER</kbd> to update the <code>Take Log</code>.</li>
+			<li>If the <code>Take Log</code> is open, you can click on the copy button or press <kbd>CTRL + C</kbd> to copy the <code>Take Log</code> to your clipboard.</li>
+			<li>To reset or clear everything, especially the <code>Take Log</code>, simply reload this page. Be sure to copy, paste and save the <code>Take Log</code> elsewhere first though.</li>
+		</ul>
+		<table>
+			<thead>
+				<th class="txt-right">Keyboard Shortcut</th>
+				<th>Function</th>
+			</thead>
+			<tbody>
+				<tr><td class="txt-right"><kbd>Q</kbd></td><td>Start/Stop Recording Camera/Zoom Meeting or Sending Stream (<code>Roll Camera</code>)</td></tr>
+				<tr><td class="txt-right"><kbd>M</kbd></td><td>Start/Stop Take or Stream Highlight (<code>Action!</code>)</td></tr>
+				<tr><td class="txt-right"><kbd>X</kbd></td><td>Stop and Ignore Current Take or Stream Highlight</td></tr>
+				<tr><td class="txt-right"><kbd>L</kbd></td><td>Show Take Log</td></tr>
+				<tr><td class="txt-right"><kbd>ESC</kbd></td><td>Close Take Log</td></tr>
+				<tr><td class="txt-right"><kbd>CTRL+C</kbd></td><td>Copy Take Log</td></tr>
+				<tr><td class="txt-right"><kbd>H</kbd></td><td>Show/Hide this help message</td></tr>
+			</tbody>
+		</table>
+		<audio id="beep-audio"><source src="s/beep.mp3" type="audio/mpeg" preload="auto"></audio>
+		<div class="txt-tiny">
+			<p>* This page does not save any data to any cloud service and all data is kept on your local device.</p>
+			<p>Version: 1.1-20230821<br/>Copyright &copy; 2023 Patrick Khoo <a href="https://deepwave.net" target="_blank">https://deepwave.net</a>. All rights reserved.</p>
+		</div>
+	</details>
+</article>
+
+</main>
+</body></html>

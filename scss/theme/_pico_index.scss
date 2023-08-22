@@ -1,0 +1,59 @@
+// ---- SASS Modules - Add them to individual Modules
+@use "sass:math";  // We can't use normal CSS div, but must use SASS math.div
+@use "sass:color";  // Color Functions
+@use "sass:map";  // Array Functions
+
+// This is Pico v2
+// Refer to: PicoCSS/_index.scss
+// We need to override the settings and theme
+
+// =============================================================================================
+
+// @use "../vendor/pico/utils/copyright";
+
+// Config
+// @forward "../vendor/pico/settings";
+
+// Theming
+// @use "../vendor/pico/themes/default";
+
+// Layout
+@use "../vendor/pico/layout/document"; // html
+@use "../vendor/pico/layout/landmarks"; // body, header, main, footer
+@use "../vendor/pico/layout/container"; // .container, .container-fluid
+@use "../vendor/pico/layout/section"; // section
+@use "../vendor/pico/layout/grid"; // .grid
+@use "../vendor/pico/layout/scroller"; // figure
+
+// Content
+@use "../vendor/pico/content/link"; // a, role="link"
+@use "../vendor/pico/content/typography"; // headings, p, ul, blockquote, ...
+@use "../vendor/pico/content/embedded"; // audio, canvas, iframe, img, svg, video
+@use "../vendor/pico/content/button"; // button, role="button", type="button", type="submit" ...
+@use "../vendor/pico/content/table"; // table, tr, td, ...
+@use "../vendor/pico/content/code"; // pre, code, ...
+@use "../vendor/pico/content/miscs"; // hr, template, [hidden], dialog, canvas
+
+// Forms
+@use "../vendor/pico/forms/basics"; // input, select, textarea, label, fieldset, legend
+@use "../vendor/pico/forms/checkbox-radio-switch"; // type="checkbox", type="radio", role="switch"
+@use "../vendor/pico/forms/input-color"; // type="color"
+@use "../vendor/pico/forms/input-date"; // type="date", type="datetime-local", type="month", type="time", type="week"
+@use "../vendor/pico/forms/input-file"; // type="file"
+@use "../vendor/pico/forms/input-range"; // type="range"
+@use "../vendor/pico/forms/input-search"; // type="search"
+
+// Components
+@use "../vendor/pico/components/accordion"; // details, summary
+@use "../vendor/pico/components/card"; // article
+@use "../vendor/pico/components/dropdown"; // details.dropdown
+@use "../vendor/pico/components/group"; // role="group"
+@use "../vendor/pico/components/loading"; // aria-busy=true
+@use "../vendor/pico/components/modal"; // dialog
+@use "../vendor/pico/components/nav"; // nav
+@use "../vendor/pico/components/progress"; // progress
+@use "../vendor/pico/components/tooltip"; // data-tooltip
+
+// Utilities
+@use "../vendor/pico/utilities/accessibility"; // -ms-touch-action, aria-*
+@use "../vendor/pico/utilities/reduce-motion"; // prefers-reduced-motion

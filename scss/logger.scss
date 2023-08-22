@@ -1,0 +1,32 @@
+// ---- SASS Modules - Add them to individual Modules
+@use "sass:math";  // We can't use normal CSS div, but must use SASS math.div
+@use "sass:color";  // Color Functions
+@use "sass:map";  // Array Functions
+
+@use 'theme/copyright';  // Copyright
+
+// ---- Vendor Stuff
+@use 'vendor/flexboxgrid' as *;	// Flexbox Grid
+@use 'vendor/pico/settings' as * with (
+	$enable-responsive-spacings: false,
+);
+@use 'theme/pico_index' as *;  // PicoCSS
+@use 'theme/theme' as *;  // PicoCSS Theme
+
+// ---- Other Mods and Styles
+.txt-center { text-align: center; }
+.txt-right { text-align: right; }
+.txt-contrast { #{$✨}color: var(#{$✨}contrast); }
+.txt-tiny { font-size: 0.75rem; }
+.btn-max-width { width: 100%; }
+.btn-space-below { margin-bottom: var(#{$✨}spacing); }
+article {
+	#{$✨}block-spacing-vertical: 1rem;
+	& > details {
+		margin-top: var(#{$✨}spacing);
+	}
+}
+article.expanded {
+	padding-top: 4.65rem;
+	padding-bottom: 4.6rem;
+}

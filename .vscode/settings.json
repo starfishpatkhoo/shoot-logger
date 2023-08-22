@@ -1,0 +1,38 @@
+{
+	"settings": {
+		"editor.insertSpaces": false,  // Use Tabs instead of Spaces
+		"editor.tabSize": 4,  // Tab size
+		"editor.detectIndentation": true,  // Auto detect insertSpaces and tabSize from document
+		"files.eol": "\n",  // Force using LF instead of CRLF as a file line ending - save some space dammit
+	},
+	"tasks": {  // Run Build Task (CTRL+SHIFT+B)
+		"windows": {  // Make sure we run this in CMD and not WSL
+			"options": {
+				"shell": {
+					"executable": "cmd.exe",
+					"args": [
+						"/d", "/c"
+					]
+				}
+			}
+		},
+		"label": "Compile Minify",
+		"type": "shell",
+		"command": "compress.cmd",
+		"presentation": {
+			"echo": true,
+			"reveal": "always",
+			"focus": false,
+			"panel": "shared",
+			"showReuseMessage": false,
+			"clear": true
+		},
+		"group": {
+			"kind": "build",
+			"isDefault": true
+		},
+		"options": {
+			"cwd": "${workspaceFolder}/bin"
+		}
+	}
+}
