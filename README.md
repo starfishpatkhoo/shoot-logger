@@ -8,6 +8,10 @@ So having a simple tool you can use to quickly _(hint: keyboard shortcuts)_ reco
 
 Of course the timecodes here are not precise/exact (we don't have a Tentacle Sync after all), so it may be off by a few frames/miliseconds/seconds when you open your files in your favourite editor. But hopefully, it saves you a lot of time/effort in scrubbing your video files looking for that one good take or highlight.
 
+Jump straight to the shoot logger at https://starfishpatkhoo.github.io/shoot-logger/
+
+For full instructions, please read the Help section in the Logger itself.
+
 ## Workflow: One File, Many Takes
 
 In my normal workflow, I tend to record multiple takes continuously (multiple takes in a single recording). This creates a single long recording file with many takes, rather than many small files (each with one take). This is also the workflow for streaming or Zoom because you can't start/stop a stream or Zoom room whenever you like, just to pick out a good/bad highlight (take).
@@ -15,8 +19,6 @@ In my normal workflow, I tend to record multiple takes continuously (multiple ta
 ## Workflow: One Take per File
 
 If your workflow is one where you start a new recording for each individual take (one take per recording) and create many small files, you can still use this tool by noting the `File #` and/or using the comment field to indicate the file name/recording number instead. Just remember that recordings that have no good takes in it are ignored and not saved to the `Take Log`.
-
-For full instructions, please read the Help section in the Logger itself.
 
 ### Ideas:
 
@@ -33,5 +35,4 @@ Another useful integration would be with timecode generators like Tentacle Sync.
 
 ---
 
-Copyright 2023 (c) Patrick Khoo @ https://deepwave.net  
-Version: 1.1-20230821  
+Copyright 2023 (c) Patrick Khoo @ https://deepwave.net
