@@ -186,8 +186,23 @@ function clear_comment() {
 	id_take_comment.value = "";
 }
 
-// Support Function - Update FPS
-function update_fps() {
+// Support Function - Update/Save/Read FPS
+function save_fps() { localStorage.lSfps = fps; }
+function read_fps() {
+	if (localStorage.lSfps) {
+		return localStorage.lSfps;  // We have a previously saved FPS
+	} else {
+		return fps;  // No previously saved FPS, return the current (default) FPS Setting
+	}
+}
+function update_fps(change_fps = null) {
+	if (null !== change_fps) {
+		fps = change_fps;
+		save_fps();  // Save the new FPS
+	} else {
+		fps = read_fps();
+		id_btn_fps.value = fps;  // Set the Page Select Box According to the Previously Saved FPS
+	}
 	if (2 > fps) {
 		mspf = 1000;  // No Frames
 	} else {
@@ -294,7 +309,7 @@ window.onload = function () {
 	id_btn_take.onclick = function() { take_toggle(); }
 	id_btn_discard.onclick = function() { take_stop(); }
 	id_btn_copy.onclick = function() { log_copy(); }
-	id_btn_fps.onchange = function() { fps = id_btn_fps.value; update_fps(); }
+	id_btn_fps.onchange = function() { update_fps(id_btn_fps.value); }
 
 	// Keyboard Event Listener
 	document.addEventListener('keydown', function(event) {

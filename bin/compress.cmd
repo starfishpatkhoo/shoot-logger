@@ -4,10 +4,10 @@ rem File Locations
 set TERSERCMD=C:\PortaSyncApps\nodejs\terser.cmd
 set SASSCMD=C:\PortaSyncApps\nodejs\sass.bat
 
-echo Executing Terser to Generate Minified JS for Shot-Logger
+echo Executing Terser to Generate Minified JS for Shoot-Logger
 call %TERSERCMD% ..\js\*.js --config-file=terser.opt.json -o ..\compiled\logger.min.js
 
-echo Executing Dart-SASS to Generate Minified CSS for Shot-Logger
+echo Executing Dart-SASS to Generate Minified CSS for Shoot-Logger
 call %SASSCMD% -s compressed ..\scss\logger.scss ..\compiled\logger.min.css
 
 echo Deploying Internally
